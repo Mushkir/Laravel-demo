@@ -17,7 +17,8 @@ Route::get('/contact', function () {
 });
 
 Route::get('/user-form', function () {
-    return view('user_form');
+    $title = "Send user info"; // Changing View values in route dynamically
+    return view('user_form', ['title' => $title]);
 });
 
 Route::post('get-userdata', function (Request $request) {
@@ -30,6 +31,7 @@ Route::post('get-userdata', function (Request $request) {
     $age = $request->input('age');
     $phone = $request->input('phone');
 
+    // Redirect to another page
     return redirect('/user-form')->with('message', 'Form Submitted successfully!');
 
     // return "Hi! Your name " . $name . ", your age is " . $age . ", & your contact number is " . $phone;

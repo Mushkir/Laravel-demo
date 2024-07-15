@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>Send user info</h1>
+    <h1><?php echo $title; ?></h1>
     <?php echo session('message'); ?>
 
     <form action="<?= url('get-userdata') ?>" method="post">
