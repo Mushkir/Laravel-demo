@@ -17,8 +17,13 @@ Route::get('/contact', function () {
 });
 
 Route::get('/user-form', function () {
-    $title = "Send user info"; // Changing View values in route dynamically
-    return view('user_form', ['title' => $title]);
+    $title = "Send user infoo"; // Changing View values in route dynamically
+    // $title2 = "Hi";
+    // return view('user_form', ['title' => $title]);
+
+    return view('user_form', compact('title'));
+
+    // return view('user_form')->withTitle($title2);
 });
 
 Route::post('get-userdata', function (Request $request) {

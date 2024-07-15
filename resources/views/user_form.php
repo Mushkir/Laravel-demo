@@ -9,6 +9,7 @@
 
 <body>
     <h1><?php echo $title; ?></h1>
+
     <?php echo session('message'); ?>
 
     <form action="<?= url('get-userdata') ?>" method="post">
