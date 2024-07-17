@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\GalleryName;
 use App\Http\Middleware\MonthNum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -77,7 +78,7 @@ Route::view('sample-page', 'page'); // * It is efficient way
 //     return '<h1> Videos page </h1>';
 // });
 
-Route::prefix('gallery')->group(function () {
+Route::prefix('gallery')->middleware(GalleryName::class)->group(function () {
     Route::get('/photos', function () {
 
         return '<h1> Photos page </h1>';
