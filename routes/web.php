@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\MonthNum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -42,7 +43,7 @@ Route::post('get-userdata', function (Request $request) {
     // return "Hi! Your name " . $name . ", your age is " . $age . ", & your contact number is " . $phone;
 });
 
-// Route Parameters
+// ! Route Parameters
 Route::get('sample-page/{id}/{type?}', function ($id, $type = null) {
 
     if ($id == 1 && $type == 'page') {
@@ -52,7 +53,7 @@ Route::get('sample-page/{id}/{type?}', function ($id, $type = null) {
     } else {
         return "This is First something.";
     }
-})->name('page'); // => It could be called as 'Naming Router' Line No. 55
+})->name('page'); // * => It could be called as 'Naming Router' Line No. 55
 
 // Writing route for only display VIEW.
 // Route::get('/getPageInfo', function () {
@@ -62,4 +63,40 @@ Route::get('sample-page/{id}/{type?}', function ($id, $type = null) {
 
 // or
 
-Route::view('sample-page', 'page'); // It is efficient way
+Route::view('sample-page', 'page'); // * It is efficient way
+
+// ! Route Groups and Middleware
+// ! Route Groups
+// Route::get('/gallery/photos', function () {
+
+//     return '<h1> Photos page </h1>';
+// });
+
+// Route::get('/gallery/videos', function () {
+
+//     return '<h1> Videos page </h1>';
+// });
+
+Route::prefix('gallery')->group(function () {
+    Route::get('/photos', function () {
+
+        return '<h1> Photos page </h1>';
+    });
+
+    Route::get('/videos', function () {
+
+        return '<h1> Videos page </h1>';
+    });
+});
+
+// ! Route Middleware
+Route::get('/month/{num}', function ($num) {
+
+    if ($num == 1) {
+        return '<h1>January</h1>';
+    } else if ($num == 2) {
+        return '<h1>Feb</h1>';
+    } else if ($num == 3) {
+        return '<h1>March</h1>';
+    }
+})->middleware(MonthNum::class);
