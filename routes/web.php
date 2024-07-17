@@ -41,3 +41,25 @@ Route::post('get-userdata', function (Request $request) {
 
     // return "Hi! Your name " . $name . ", your age is " . $age . ", & your contact number is " . $phone;
 });
+
+// Route Parameters
+Route::get('sample-page/{id}/{type?}', function ($id, $type = null) {
+
+    if ($id == 1 && $type == 'page') {
+        return "This is First page.";
+    } else if ($id == 1 && $type == 'number') {
+        return "This is Fist number.";
+    } else {
+        return "This is First something.";
+    }
+})->name('page'); // => It could be called as 'Naming Router' Line No. 55
+
+// Writing route for only display VIEW.
+// Route::get('/getPageInfo', function () {
+
+//     return view('page');
+// });
+
+// or
+
+Route::view('sample-page', 'page'); // It is efficient way
