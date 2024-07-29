@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MonthController;
+use App\Http\Controllers\PostController;
 use App\Http\Middleware\GalleryName;
 use App\Http\Middleware\MonthNum;
 use Illuminate\Http\Request;
@@ -10,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('home');
+// Route::get('/', function () {
+//     return view('home');
+// });
+
+Route::get('/tem', function () {
+    return view('layour');
 });
 
 Route::get('/contact', function () {
@@ -101,3 +108,22 @@ Route::get('/month/{num}', function ($num) {
         return '<h1>March</h1>';
     }
 })->middleware(MonthNum::class);
+
+
+// ! Controller
+Route::get('/login', [LoginController::class, 'login_form']);
+
+Route::post('/login', [LoginController::class, 'login_process']);
+
+Route::get('/forgot_password', [LoginController::class, 'forgot_password']);
+
+Route::get('/post/{id}', [PostController::class, 'show']);
+
+Route::get('/num_month/{num}', [MonthController::class, 'numToMonth'])->middleware(MonthNum::class);
+
+
+// ! View with Blade Engine
+//Route::view('/layout', 'layouts.default');
+Route::view('/', 'layouts.home');
+Route::view('/contact', 'layouts.contact');
+Route::view('/about', 'layouts.about');
