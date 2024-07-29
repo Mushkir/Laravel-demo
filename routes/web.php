@@ -130,7 +130,8 @@ Route::get('/', function () {
     $heading = '<h1>Welcome to the Home page</h1>';
     $no_of_users = 1;
     $is_user_online = 0;
-    return view('layouts.home', compact('heading', 'no_of_users', 'is_user_online'));
+    $authors = ['Francis', 'Bala Murugan', 'Mohamed Hussain', 'Balaji'];
+    return view('layouts.home', compact('heading', 'no_of_users', 'is_user_online', 'authors'));
 });
 Route::view('/contact', 'layouts.contact');
 Route::view('/about', 'layouts.about');
