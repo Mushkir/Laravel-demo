@@ -124,6 +124,13 @@ Route::get('/num_month/{num}', [MonthController::class, 'numToMonth'])->middlewa
 
 // ! View with Blade Engine
 //Route::view('/layout', 'layouts.default');
-Route::view('/', 'layouts.home');
+// Route::view('/', 'layouts.home');
+Route::get('/', function () {
+
+    $heading = '<h1>Welcome to the Home page</h1>';
+    $no_of_users = 1;
+    $is_user_online = 0;
+    return view('layouts.home', compact('heading', 'no_of_users', 'is_user_online'));
+});
 Route::view('/contact', 'layouts.contact');
 Route::view('/about', 'layouts.about');
