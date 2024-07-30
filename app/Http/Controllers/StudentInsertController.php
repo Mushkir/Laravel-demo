@@ -45,4 +45,11 @@ class StudentInsertController extends Controller
 
         return "Record updated successfully. <a href='/list_students'>Back to home</a>";
     }
+
+    public function delete($id)
+    {
+        DB::delete('delete from student where id = ?', [$id]);
+
+        return "Record deleted successfully. <a href='/list_students'>Back to home</a>";
+    }
 }
