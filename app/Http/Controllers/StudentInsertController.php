@@ -28,4 +28,21 @@ class StudentInsertController extends Controller
 
         return view('student_list', ['students' => $students]);
     }
+
+
+    public function edit($id)
+    {
+        $student = DB::select('select * from student where id = ?', [$id]);
+
+        return view('student_edit', ['student' => $student]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $name = $request->input('student_name');
+
+        DB::update('update student set name = ? where id = ?', [$name, $id]);
+
+        return "Record updated successfully. <a href='/list_students'>Back to home</a>";
+    }
 }

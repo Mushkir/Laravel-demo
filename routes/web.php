@@ -141,3 +141,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [StudentInsertController::class, 'insert_form']);
 Route::post('/create', [StudentInsertController::class, 'insert']);
 Route::get('/list_students', [StudentInsertController::class, 'student_list']);
+Route::get('/edit/{id}', [StudentInsertController::class, 'edit']);
+Route::post('/edit/{id}', [StudentInsertController::class, 'update']);

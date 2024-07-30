@@ -12,11 +12,13 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Edit</th>
         </tr>
         @foreach ($students as $student)
             <tr>
                 <td>{{ $student->id }}</td>
                 <td>{{ $student->name }}</td>
+                <td> <a href="edit/{{ $student->id }}">Edit</a> </td>
             </tr>
         @endforeach
     </table>
