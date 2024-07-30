@@ -20,4 +20,12 @@ class StudentInsertController extends Controller
 
         return "Record inserted successfully. <a href='/'>Click here to go back</a>";
     }
+
+    // Function for show all students
+    public function student_list()
+    {
+        $students = DB::select('select * from student');
+
+        return view('student_list', ['students' => $students]);
+    }
 }
