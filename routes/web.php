@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MonthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\StudentInsertController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\GalleryName;
 use App\Http\Middleware\MonthNum;
 use Illuminate\Http\Request;
@@ -138,9 +139,12 @@ use Illuminate\Support\Facades\Route;
 // Route::view('/about', 'layouts.about');
 
 
-Route::get('/', [StudentInsertController::class, 'insert_form']);
-Route::post('/create', [StudentInsertController::class, 'insert']);
-Route::get('/list_students', [StudentInsertController::class, 'student_list']);
-Route::get('/edit/{id}', [StudentInsertController::class, 'edit']);
-Route::post('/edit/{id}', [StudentInsertController::class, 'update']);
-Route::get('/delete/{id}', [StudentInsertController::class, 'delete']);
+// Route::get('/', [StudentInsertController::class, 'insert_form']);
+// Route::post('/create', [StudentInsertController::class, 'insert']);
+// Route::get('/list_students', [StudentInsertController::class, 'student_list']);
+// Route::get('/edit/{id}', [StudentInsertController::class, 'edit']);
+// Route::post('/edit/{id}', [StudentInsertController::class, 'update']);
+// Route::get('/delete/{id}', [StudentInsertController::class, 'delete']);
+
+Route::get('/', [UserController::class, 'create']);
+Route::post('/store', [UserController::class, 'store']);
