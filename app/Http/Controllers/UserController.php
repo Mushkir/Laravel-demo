@@ -39,4 +39,24 @@ class UserController extends Controller
 
         return view('list_user', ['users' => $user]);
     }
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+
+        return view('edit_user', ['user' => $user]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        $user->name = $request->input('name');
+        $user->age = $request->input('age');
+        $user->phone = $request->input('phone');
+
+        $user->save();
+
+        return "Data updated successfully. <a href='/list'>Go to list </a>";
+    }
 }

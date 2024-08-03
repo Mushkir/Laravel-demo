@@ -149,3 +149,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [UserController::class, 'create']);
 Route::post('/store', [UserController::class, 'store']);
 Route::get('/list', [UserController::class, 'list']);
+Route::get('/edit/{id}', [UserController::class, 'edit']);
+Route::post('/update/{id}', [UserController::class, 'update']);
