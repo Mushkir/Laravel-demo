@@ -148,3 +148,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'create']);
 Route::post('/store', [UserController::class, 'store']);
+Route::get('/list', [UserController::class, 'list']);

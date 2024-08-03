@@ -14,18 +14,29 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $username = $request->input('name');
-        $phone = $request->input('phone');
-        $age = $request->input('age');
+        // $username = $request->input('name');
+        // $phone = $request->input('phone');
+        // $age = $request->input('age');
 
-        $user = new User;
+        // $user = new User;
 
-        $user->name = $username;
-        $user->phone = $phone;
-        $user->age = $age;
+        // $user->name = $username;
+        // $user->phone = $phone;
+        // $user->age = $age;
 
-        $user->save();
+        // $user->save();
+
+        $data = $request->only(['name', 'age', 'phone']);
+
+        $user = User::create($data);
 
         return "User added successfully. User ID: " . $user->id;
+    }
+
+    public function list()
+    {
+        $user = User::all();
+
+        return view('list_user', ['users' => $user]);
     }
 }
