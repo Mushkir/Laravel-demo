@@ -151,3 +151,5 @@ Route::post('/store', [UserController::class, 'store']);
 Route::get('/list', [UserController::class, 'list']);
 Route::get('/edit/{id}', [UserController::class, 'edit']);
 Route::post('/update/{id}', [UserController::class, 'update']);
+Route::get('/delete/{id}', [UserController::class, 'delete']);
+Route::get('/deleteAll', [UserController::class, 'deleteAll']);

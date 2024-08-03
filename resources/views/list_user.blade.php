@@ -11,6 +11,8 @@
 <body>
 
     <h3>User List</h3>
+    <small> <a href="/">Back to home</a> </small>
+    <h3><a href="/deleteAll">Delete all</a></h3>
     <table>
         <thead>
             <th>ID</th>

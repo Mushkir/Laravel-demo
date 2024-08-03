@@ -30,7 +30,7 @@ class UserController extends Controller
 
         $user = User::create($data);
 
-        return "User added successfully. User ID: " . $user->id;
+        return "User added successfully. User ID: " . $user->id . "<a href='/'>Back to Home</a>";
     }
 
     public function list()
@@ -58,5 +58,21 @@ class UserController extends Controller
         $user->save();
 
         return "Data updated successfully. <a href='/list'>Go to list </a>";
+    }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+
+        $user->delete();
+
+        return "Data deleted successfully. <a href='/list'>Go to list</a>";
+    }
+
+    public function deleteAll()
+    {
+        User::truncate();
+
+        return "All data deleted! <a href='/'>Back to Home</a>";
     }
 }

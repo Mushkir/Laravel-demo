@@ -10,6 +10,8 @@
 
 <body>
 
+    <h3><a href="/list">Go to List User</a></h3>
+
     <form action="/store" method="POST">
 
         <label for="">Username</label>
