@@ -1,5 +1,8 @@
 <?php
 
+use App\Facades\Greet;
+use App\Http\Controllers\ImageUploadController;
+use App\Services\Output\Text\GreetingService;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MonthController;
 use App\Http\Controllers\PostController;
@@ -8,8 +11,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\GalleryName;
 use App\Http\Middleware\MonthNum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
+use Intervention\Image\Laravel\Facades\Image;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -146,10 +151,21 @@ use Illuminate\Support\Facades\Route;
 // Route::post('/edit/{id}', [StudentInsertController::class, 'update']);
 // Route::get('/delete/{id}', [StudentInsertController::class, 'delete']);
 
-Route::get('/', [UserController::class, 'create']);
-Route::post('/store', [UserController::class, 'store']);
-Route::get('/list', [UserController::class, 'list']);
-Route::get('/edit/{id}', [UserController::class, 'edit']);
-Route::post('/update/{id}', [UserController::class, 'update']);
-Route::get('/delete/{id}', [UserController::class, 'delete']);
-Route::get('/deleteAll', [UserController::class, 'deleteAll']);
+// Route::get('/', [UserController::class, 'create']);
+// Route::post('/store', [UserController::class, 'store']);
+// Route::get('/list', [UserController::class, 'list']);
+// Route::get('/edit/{id}', [UserController::class, 'edit']);
+// Route::post('/update/{id}', [UserController::class, 'update']);
+// Route::get('/delete/{id}', [UserController::class, 'delete']);
+// Route::get('/deleteAll', [UserController::class, 'deleteAll']);
+
+// Route::get('/google', function () {
+
+//     // $google_api_token = Config::get('google.google_api_key'); or
+//     $google_api_token = config('google.google_api_key');
+
+//     return $google_api_token;
+// });
+
+Route::get('/', [ImageUploadController::class, 'index']);
+Route::post('/', [ImageUploadController::class, 'imageUpload']);
