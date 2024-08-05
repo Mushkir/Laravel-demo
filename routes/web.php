@@ -1,6 +1,7 @@
 <?php
 
 use App\Facades\Greet;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageUploadController;
 use App\Services\Output\Text\GreetingService;
 use App\Http\Controllers\LoginController;
@@ -172,5 +173,16 @@ use Intervention\Image\Laravel\Facades\Image;
 // Route::post('/', [ImageUploadController::class, 'imageUpload']);
 
 
-Route::get('/', [UsersController::class, 'index']);
-Route::post('/', [UsersController::class, 'createUser']);
+// Route::get('/', [UsersController::class, 'index']);
+// Route::post('/', [UsersController::class, 'createUser']);
+
+Route::get('/', function () {
+    return view('page');
+});
+
+Route::prefix('delete')->group(function () {
+
+    Route::get('/public', [HomeController::class, 'deleteFromPublic']);
+
+    Route::get('/storage', [HomeController::class, 'deleteFromStorage']);
+});
