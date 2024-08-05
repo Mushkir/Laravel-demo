@@ -8,6 +8,7 @@ use App\Http\Controllers\MonthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\StudentInsertController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
 use App\Http\Middleware\GalleryName;
 use App\Http\Middleware\MonthNum;
 use Illuminate\Http\Request;
@@ -167,5 +168,9 @@ use Intervention\Image\Laravel\Facades\Image;
 //     return $google_api_token;
 // });
 
-Route::get('/', [ImageUploadController::class, 'index']);
-Route::post('/', [ImageUploadController::class, 'imageUpload']);
+// Route::get('/', [ImageUploadController::class, 'index']);
+// Route::post('/', [ImageUploadController::class, 'imageUpload']);
+
+
+Route::get('/', [UsersController::class, 'index']);
+Route::post('/', [UsersController::class, 'createUser']);
